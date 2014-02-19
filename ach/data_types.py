@@ -35,7 +35,7 @@ class Ach(object):
         """
 
         if len(field) != length:
-            spaces_needed = length - len(field)
+            spaces_needed = length
             return field.rjust(spaces_needed)
         else:
             return field
@@ -197,11 +197,7 @@ class FileControl(Ach):
         """
         Initializes all the values we need for our file control record
         """
-
-        debit_amount = int((100 * debit_amount))
-        # Fix 1/4/12 rob@payperks.com
-        # credit_amount = int((100 * credit_amount))
-
+        
         self.batch_count   = self.validate_numeric_field( batch_count, 6)
         self.block_count   = self.validate_numeric_field( block_count, 6)
         self.entadd_count  = self.validate_numeric_field( entadd_count, 8)
